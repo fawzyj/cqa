@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @question.title %>
+
+<h2><%= @question.title %></h2>
 </p>
 
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to t('edit'), edit_question_path(@question) %> |
 <%= link_to t('back'), questions_path %>

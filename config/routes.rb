@@ -1,4 +1,11 @@
 Cqa::Application.routes.draw do
+
+  devise_for :users
+
+  root :to => "home#index"
+  
+  get 'home/about', :as => :about
+
   resources :categories
 
   resources :answers
@@ -7,9 +14,7 @@ Cqa::Application.routes.draw do
 
   resources :questions
 
-  devise_for :users
 
-  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

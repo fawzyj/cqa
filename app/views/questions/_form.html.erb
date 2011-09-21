@@ -2,10 +2,10 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :title %>
+    <%= f.input :title ,:label => t('views.question.title') %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit ,:value => t('submit')%>
   </div>
 <% end %>

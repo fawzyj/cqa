@@ -1,23 +1,23 @@
 <h1><%= t('views.question.list') %></h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
 
 <% @questions.each do |question| %>
-  <tr>
-    <td><%= question.title %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <div class="item">
+      <h2><%= question.title %></h2>
+      <div class="standard_actions">
+        <%= link_to t('show'), question %>
+        <%= link_to t('edit'), edit_question_path(question) %>
+        <%= link_to t('destroy'), question, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
 <% end %>
-</table>
+
+
 
 <br />
 
 <%= link_to t('views.question.new_question'), new_question_path %>
+
+
+

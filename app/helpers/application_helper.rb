@@ -6,4 +6,12 @@ module ApplicationHelper
   def tags
     Tag.all
   end
+
+  def questions
+    Question.all
+  end
+
+  def articles
+    Article.all
+  end
 end

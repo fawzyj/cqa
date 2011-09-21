@@ -1,6 +1,6 @@
-<h1>Editing category</h1>
+<h1><%= t('views.category.edit_category') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @category %> |
+<%= link_to t('show'), @category %> |
 <%= link_to t('back'), categories_path %>

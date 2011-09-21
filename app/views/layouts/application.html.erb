@@ -20,6 +20,15 @@
       }
       #header {
           border-bottom:1px dotted #999;
+          position: relative;
+      }
+      #header h1 a{
+          text-decoration: none;
+      }
+      #user_info{
+          position: absolute;
+          left: 0;
+          top:-15px;
       }
       ul#nav {
           margin: 0;
@@ -32,12 +41,16 @@
           float: right;
       }
       ul#nav li a {
-          padding: 5px;
+          padding: 5px 15px;
           display: block;
+          text-decoration: none;
+
       }
+
+
       ul.side_list{
           margin: 0;
-          padding: 0;
+          padding-right: 10px;
           
           list-style: none;
       }
@@ -47,11 +60,14 @@
       ul.side_list li a{
           display: block;
           padding: 5px;
+          text-decoration: none;
       }
       #footer {
           height: 20px;
           padding:10px;
+          margin-top: 30px;
           border-top:1px dotted #999;
+          text-align: center;
       }
       #content_wrapper{
           overflow: hidden;
@@ -60,11 +76,17 @@
           float: right;
           width:260px;
       }
+      #side_bar h3{
+          margin-bottom: 5px;
+      }
       #main_content{
           float: right;
           margin-right: 20px;
           width:600px;
       }
+          .simple_form div.input label{
+              display: block;
+          }
 
   </style>
 </head>
@@ -81,7 +103,7 @@
           <%= link_to(t('register'), new_user_registration_path)  %>
       <% end %>
     </div>
-    <h1><%= t('main_title') %></h1>
+    <h1><%= link_to t('main_title') ,root_path %></h1>
     <div id="global_messages">
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
@@ -89,21 +111,30 @@
     <ul id="nav">
       <li><%= link_to t('views.question.questions'), questions_path %></li>
       <li><%= link_to t('views.article.articles'), articles_path %></li>
+      <li><%= link_to t('about'), about_path %></li>
     </ul>
 
   </div>
   <div id="content_wrapper">
     <div id="side_bar">
       <h3><%= t('views.category.categories') %></h3>
-      <ul class="side_list">
-        <li></li>
-      </ul>
+      <% if categories.size > 0 %>
+          <ul class="side_list">
+            <% for c in categories %>
+                <li><%= link_to c.name, '#' %></li>
+            <% end %>
+          </ul>
+      <% end %>
+      <br />
+      <%= link_to t('views.category.new_category'),new_category_path %>
     </div>
     <div id="main_content">
       <%= yield %>
     </div>
   </div>
-  <div id="footer"></div>
+  <div id="footer">
+    <%= t('copyright') %>
+  </div>
 </div>
 
 
