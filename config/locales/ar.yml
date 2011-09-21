@@ -1,0 +1,31 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ar:
+  hello: "اهلا"
+  main_title: "اسئله عقائديه"
+  back: "السابق"
+  edit: "تعديل"
+  submit: "أرسل"
+  title: "العنوان"
+  body: "المحتوى"
+  article_list: "قائمة المقالات"
+  register: "سجل عضويتك"
+  login: "ادخل"
+  logout: "خروج"
+  profile: "بيانات حسابك"
+  views:
+    article:
+      articles: "مقالات"
+      new_article: "مقال جديد"
+      list: "قائمة المقالات"
+    question:
+      questions: "اسئله"
+      new_question: "سؤال جديد"
+      list: "قائمة الأسئله"
+    category:
+      categories: "موضوعات"
+      new_article: "موضوع جديد"
+      list: "قائمة الموضوعات"
+    home:
+      welcome_header: "اهلا بكم فى اسئله عقائديه"

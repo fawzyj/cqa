@@ -13,9 +13,9 @@
       }
       #page_wrapper{
           background: #fff;
-          margin: 20px auto;
-          padding: 20px;
-          width:960px;
+          margin: 30px auto;
+          padding: 30px;
+          width:900px;
           border: 1px solid #999;
       }
       #header {
@@ -35,6 +35,19 @@
           padding: 5px;
           display: block;
       }
+      ul.side_list{
+          margin: 0;
+          padding: 0;
+          
+          list-style: none;
+      }
+      ul.side_list li{
+          border-bottom: 1px dotted #999;
+      }
+      ul.side_list li a{
+          display: block;
+          padding: 5px;
+      }
       #footer {
           height: 20px;
           padding:10px;
@@ -43,30 +56,48 @@
       #content_wrapper{
           overflow: hidden;
       }
-          #side_bar{
-              float: right;
-              width:320px;
-          }
-          #main_content{
-              float: right;
-              margin-right: 20px;
-              width:600px;
-          }
+      #side_bar{
+          float: right;
+          width:260px;
+      }
+      #main_content{
+          float: right;
+          margin-right: 20px;
+          width:600px;
+      }
 
   </style>
 </head>
 <body>
 <div id="page_wrapper">
   <div id="header">
-    <h1>اسئله عقائديه</h1>
+    <div id="user_info">
+      <% if user_signed_in? %>
+          You are signed in as <%= current_user.email  %>
+          <%= link_to(t('logout'), destroy_user_session_path, :method => 'delete') %> |
+          <%= link_to(t('profile'), edit_user_registration_path) %>
+      <% else %>
+          <%= link_to(t('login'), new_user_session_path)  %> |
+          <%= link_to(t('register'), new_user_registration_path)  %>
+      <% end %>
+    </div>
+    <h1><%= t('main_title') %></h1>
+    <div id="global_messages">
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+   </div>
     <ul id="nav">
-      <li><%= link_to 'الأسئله', questions_path %></li>
-      <li><%= link_to 'مقالات', articles_path %></li>
+      <li><%= link_to t('views.question.questions'), questions_path %></li>
+      <li><%= link_to t('views.article.articles'), articles_path %></li>
     </ul>
+
   </div>
   <div id="content_wrapper">
     <div id="side_bar">
-      <h1>Side</h1>
+      <h3><%= t('views.category.categories') %></h3>
+      <ul class="side_list">
+        <li></li>
+      </ul>
     </div>
     <div id="main_content">
       <%= yield %>
