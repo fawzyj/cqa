@@ -8,6 +8,9 @@ class Article
 
   belongs_to :category
   belongs_to :user
+  belongs_to :question
+
+  has_many :links , :as => :linkable
 
   has_and_belongs_to_many :tags, inverse_of: nil
 end
