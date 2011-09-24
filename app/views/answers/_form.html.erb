@@ -2,7 +2,10 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :body ,:label => t('views.answer.body')%>
+    <% if @question %>
+        <input type="hidden" value="<%= @question.id %>" name="question_id">
+    <% end %>
+    <%= f.input :body ,:label => t('views.answer.body') %>
   </div>
 
   <div class="actions">

@@ -1,27 +1,20 @@
-<h1>Listing links</h1>
+<h1><%= t('views.link.list') %></h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Url</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
 
 <% @links.each do |link| %>
-  <tr>
-    <td><%= link.name %></td>
-    <td><%= link.url %></td>
-    <td><%= link.description %></td>
-    <td><%= link_to 'Show', link %></td>
-    <td><%= link_to 'Edit', edit_link_path(link) %></td>
-    <td><%= link_to 'Destroy', link, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <div class="item">
+      <h2><%= link_to link.name , link.url%> </h2>
+      <%= link.description %>
+      <div class="standard_actions">
+        <%= link_to t('show'), link %>
+        <%= link_to t('edit'), edit_link_path(link) %>
+        <%= link_to t('destroy'), link, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Link', new_link_path %>
+<%= link_to t('views.link.new_link'), new_link_path %>

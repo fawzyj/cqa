@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b><%= t('views.answer.body') %>:</b>
+<div>
   <%= @answer.body %>
-</p>
+  <% if @answer.questions.size > 0 %>
+    <ul>
+      <% for q in @answer.questions %>
+          <li><%= q.title %></li>
+      <% end  %>
+    </ul>
+<% end  %>
+</div>
 
 
 <%= link_to t('edit'), edit_answer_path(@answer) %> |

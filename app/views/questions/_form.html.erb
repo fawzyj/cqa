@@ -3,6 +3,8 @@
 
   <div class="inputs">
     <%= f.input :title ,:label => t('views.question.title') %>
+    <%= f.input :tag_names ,:label => t('views.question.tag_names') %>
+    <%= f.input :category ,:label => t('views.question.category') do f.collection_select :category , Category.all ,:id , :name  end %>
   </div>
 
   <div class="actions">

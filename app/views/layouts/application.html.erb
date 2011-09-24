@@ -3,7 +3,7 @@
 <head>
   <title>Cqa</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :defaults , 'jquery.min' , 'jquery_ujs' %>
   <%= csrf_meta_tag %>
   <style type="text/css">
       html,body{
@@ -46,12 +46,10 @@
           text-decoration: none;
 
       }
-
-
       ul.side_list{
           margin: 0;
           padding-right: 10px;
-          
+
           list-style: none;
       }
       ul.side_list li{
@@ -79,14 +77,59 @@
       #side_bar h3{
           margin-bottom: 5px;
       }
+      .tag_cloud {
+          padding: 5px;
+          overflow: hidden;
+      }
+      .tag_cloud a{
+          padding: 3px 5px;
+          display: block;
+          float: right;
+          margin: 3px;
+          background: #eee;
+      }
       #main_content{
           float: right;
           margin-right: 20px;
           width:600px;
       }
-          .simple_form div.input label{
-              display: block;
-          }
+      .toolbar{
+          padding: 5px;
+          background: #ccc;
+          text-align: left;
+      }
+      .list_section{
+          padding: 10px 0;
+          border-bottom: 1px dotted #999;
+      }
+      .list_section ul{
+          margin: 5px 0;
+      }
+      .list_section h3{
+          margin-bottom: 3px;
+          -webkit-margin-before: 0.1em;
+          -webkit-margin-after: 0.1em;
+      }
+      .list_section h4{
+          margin-bottom: 3px;
+          -webkit-margin-before: 0.1em;
+          -webkit-margin-after: 0.1em;
+      }
+      .simple_form div.input label{
+          display: block;
+      }
+      h1.title{
+          border-bottom: 1px dotted #888;
+          padding-bottom: 5px;
+      }
+      h1 span.tag{
+          font-size: 16px;
+          font-weight: normal;
+      }
+      .section_content {
+          border-bottom: 1px dotted #888;
+          padding-bottom: 5px;
+      }
 
   </style>
 </head>
@@ -105,9 +148,9 @@
     </div>
     <h1><%= link_to t('main_title') ,root_path %></h1>
     <div id="global_messages">
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-   </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
     <ul id="nav">
       <li><%= link_to t('views.question.questions'), questions_path %></li>
       <li><%= link_to t('views.article.articles'), articles_path %></li>
@@ -121,13 +164,25 @@
       <% if categories.size > 0 %>
           <ul class="side_list">
             <% for c in categories %>
-                <li><%= link_to c.name, '#' %></li>
+                <li><%= link_to c.name, search_by_category_path(:search_term => c.name) %></li>
             <% end %>
           </ul>
       <% end %>
       <br />
       <%= link_to t('views.category.new_category'),new_category_path %>
+
+      <h3><%= t('views.tag.tags') %></h3>
+      <% if categories.size > 0 %>
+          <div class="tag_cloud">
+            <% for t in tags %>
+                <%= link_to t.name, search_by_tag_path(:search_term => t.name) %>
+            <% end %>
+          </div>
+      <% end %>
+      <br />
+      
     </div>
+
     <div id="main_content">
       <%= yield %>
     </div>

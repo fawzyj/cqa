@@ -2,16 +2,7 @@
 
 
 
-<% @articles.each do |article| %>
-    <div class="item">
-      <h2><%= article.title %></h2>
-      <div class="standard_actions">
-        <%= link_to t('show'), article %>
-        <%= link_to t('edit'), edit_article_path(article) %>
-        <%= link_to t('destroy'), article, :confirm => 'Are you sure?', :method => :delete %>
-      </div>
-    </div>
-<% end %>
+    <%= render :partial => 'article_item' ,:collection => @articles ,:as => :article%>
 
 
 <br />

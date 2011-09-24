@@ -1,10 +1,69 @@
 <p id="notice"><%= notice %></p>
 
+<h3><%= link_to @question.category.name , search_by_category_path(:search_term => @question.category.name) %></h3>
+<h1 >
+  <%= @question.title %>
+  <% if @question.tags.size > 0 %>
+      <br>
+      <% for t in @question.tags %>
+          <span class="tag"><%= link_to t ,search_by_tag_path(:search_term => t) %></span>
+      <% end %>
+  <% end %>
+</h1>
+<div class="toolbar">
+  <%= link_to t('edit'), edit_question_path(@question) %> |
+  <%= link_to t('back'), questions_path %> |
+  <%= link_to t('views.question.add_answer'), new_answer_path(:question_id => @question.id) %> |
+  <%= link_to t('views.question.add_related_question'), prepare_related_questions_path(:question_id => @question.id) %> |
+  <%= link_to t('views.question.add_article'), prepare_related_articles_path(:question_id => @question.id) %> |
+  <%= link_to t('views.question.add_link'), new_link_path(:question_id => @question.id) %>
+</div>
+<% if @question.answers.size > 0%>
+    <div class="list_section">
+      <% for a in @question.answers %>
+          <p >
+            <%= a.body %>
+          </p>
+      <% end  %>
+      <%= link_to t('views.question.add_answer'), new_answer_path(:question_id => @question.id) %>
+    </div>
+<% end  %>
+
+<% if @question.related_questions.size > 0%>
+    <div class="list_section">
+      <h2><%= t('views.question.related_questions') %></h2>
+      <% for q in @question.related_questions %>
+          <h3><%= link_to q.title, q %></h3>
+      <% end %>
+      <%= link_to t('views.question.add_related_question'), prepare_related_questions_path(:question_id => @question.id) %>
+    </div>
+<% end %>
+
+<% if @question.articles.size > 0%>
+    <div class="list_section">
+      <h3><%= t('views.question.related_articles') %></h3>
+      <ul>
+        <% for a in @question.articles %>
+            <li><h4><%= link_to a.title, a %></h4></li>
+        <% end %>
+      </ul>
+      <%= link_to t('views.question.add_article'), prepare_related_articles_path(:question_id => @question.id) %>
+    </div>
+<% end %>
 
 
-<h2><%= @question.title %></h2>
+<% if @question.links.size > 0 %>
+    <div class="list_section">
+
+      <h2><%= t('views.question.related_links') %></h2>
+      <% for l in @question.links %>
+          <h3><%= link_to l.title, l.url %></h3>
+      <% end %>
+
+      <%= link_to t('views.question.add_link'), new_link_path(:question_id => @question.id) %>
+    </div>
+<% end %>
 
 
 
-<%= link_to t('edit'), edit_question_path(@question) %> |
-<%= link_to t('back'), questions_path %>
+

@@ -2,12 +2,12 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :name %>
-    <%= f.input :url %>
-    <%= f.input :description %>
+    <%= f.input :title, :label => t('views.link.title') %>
+    <%= f.input :url , :label => t('views.link.url') %>
+    <%= f.input :description , :label => t('views.link.description') %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit %>
+    <%= f.button :submit ,:value => t('submit') %>
   </div>
 <% end %>

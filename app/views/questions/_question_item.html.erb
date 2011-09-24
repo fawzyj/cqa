@@ -1,0 +1,8 @@
+<div class="item">
+  <h2><%= link_to question.title, question %></h2>
+  <div class="standard_actions">
+    <%= link_to t('show'), question %>
+    <%= link_to t('edit'), edit_question_path(question) %>
+    <%= link_to t('destroy'), question, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div>

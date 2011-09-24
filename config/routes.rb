@@ -1,11 +1,22 @@
 Cqa::Application.routes.draw do
 
+
+
   devise_for :users
 
   root :to => "home#index"
   
   get 'home/about', :as => :about
 
+  get 'search/search_by_category' ,:as => :search_by_category
+  get 'search/search_by_tag' ,:as => :search_by_tag
+  get 'questions/prepare_related_questions' ,:as => :prepare_related_questions
+  post 'questions/add_related_questions' ,:as => :add_related_questions
+  get 'questions/prepare_related_articles' ,:as => :prepare_related_articles
+  post 'questions/add_related_articles' ,:as => :add_related_articles
+
+  resources :links
+  
   resources :categories
 
   resources :answers
@@ -13,6 +24,8 @@ Cqa::Application.routes.draw do
   resources :articles
 
   resources :questions
+
+
 
 
 

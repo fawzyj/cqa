@@ -1,0 +1,13 @@
+<h1><%= t('views.question.choose_related_questions') %></h1>
+<%= form_tag add_related_questions_path do%>
+<table>
+  <%= hidden_field_tag "question_id" , @question.id %>
+  <% for q in @questions %>
+      <tr>
+        <td><%= check_box_tag "question_ids[]",q.id %></td>
+        <td><h3><%= q.title %></h3></td>
+      </tr>
+  <% end %>
+</table>
+ <%= submit_tag t('submit') %>
+<% end %>

@@ -24,7 +24,9 @@ class AnswersController < ApplicationController
   # GET /answers/new
   # GET /answers/new.xml
   def new
+    @question=Question.find(params[:question_id])
     @answer = Answer.new
+    @answer.questions << @question
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,9 +43,12 @@ class AnswersController < ApplicationController
   # POST /answers.xml
   def create
     @answer = Answer.new(params[:answer])
+    @question=Question.find(params[:question_id])
+    @question.answers << @answer
+    @answer.questions << @question
 
     respond_to do |format|
-      if @answer.save
+      if @answer.save && @question.save
         format.html { redirect_to(@answer, :notice => 'Answer was successfully created.') }
         format.xml  { render :xml => @answer, :status => :created, :location => @answer }
       else

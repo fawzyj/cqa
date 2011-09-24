@@ -1,18 +1,6 @@
 <h1><%= t('views.question.list') %></h1>
 
-
-
-<% @questions.each do |question| %>
-    <div class="item">
-      <h2><%= question.title %></h2>
-      <div class="standard_actions">
-        <%= link_to t('show'), question %>
-        <%= link_to t('edit'), edit_question_path(question) %>
-        <%= link_to t('destroy'), question, :confirm => 'Are you sure?', :method => :delete %>
-      </div>
-    </div>
-<% end %>
-
+    <%= render :partial => 'question_item' ,:collection => @questions ,:as => :question%>
 
 
 <br />

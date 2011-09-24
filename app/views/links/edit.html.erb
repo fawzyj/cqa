@@ -1,6 +1,6 @@
-<h1>Editing link</h1>
+<h1><%= t('views.link.edit_link') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @link %> |
-<%= link_to 'Back', links_path %>
+<%= link_to t('show'), @link %> |
+<%= link_to t('back'), links_path %>

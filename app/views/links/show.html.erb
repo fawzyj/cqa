@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <b><%= t('views.link.title') %>:</b>
   <%= @link.name %>
 </p>
 
 <p>
-  <b>Url:</b>
+  <b><%= t('views.link.url') %>:</b>
   <%= @link.url %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= t('views.link.description') %>:</b>
   <%= @link.description %>
 </p>
 
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<%= link_to t('edit'), edit_link_path(@link) %> |
+<%= link_to t('back'), links_path %>

@@ -1,14 +1,10 @@
-<h1><%= t('views.home.welcome_header') %></h1>
-<p>
-
-</p>
+<h1><%= t('views.search.results') %></h1>
 <% if @questions.size > 0 %>
-    <h1><%= t('views.home.recent_question') %></h1>
+    <h1><%= t('views.question.list') %></h1>
     <%= render :partial => 'questions/question_item' ,:collection => @questions ,:as => :question%>
 <% end %>
 
 <% if @articles.size >0 %>
-    <h1><%= t('views.home.recent_articles') %></h1>
+    <h1><%= t('views.article.list') %></h1>
     <%= render :partial => 'articles/article_item' ,:collection => @articles ,:as => :article%>
 <% end %>
-
